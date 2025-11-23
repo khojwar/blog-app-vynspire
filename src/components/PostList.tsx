@@ -1,11 +1,14 @@
 "use client";
 
+import { useAuth } from '@/hooks/useAuth';
 import { usePosts } from '../hooks/usePosts';
 import { Button, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 const PostList = () => {
   const { posts, loading, error, removePost } = usePosts();
+  const {isAuthenticated} = useAuth();
+
   const router = useRouter();
 
   if (loading) return <CircularProgress />;
@@ -25,10 +28,12 @@ const PostList = () => {
               </h2>
               <p>{post.body}</p>
 
-              <div className="mt-4 flex gap-2">
-                  <Button onClick={() => router.push(`/edit/${post.id}`)} variant="outlined" >Edit</Button>
+              {isAuthenticated && (
+                <div className="mt-4 flex gap-2">
+                  <Button onClick={() => router.push(`posts/${post.id}/edit`)} variant="outlined" >Edit</Button>
                   <Button onClick={() => removePost(post.id)} variant="outlined" color="error">Delete</Button>
-              </div>
+                </div>
+              )}
 
             </li>
           ))}
