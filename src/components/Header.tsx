@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Button } from '@mui/material';
 import { useAuth } from '../hooks/useAuth';
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -24,6 +25,7 @@ export default function Header() {
               <Link href="/register"><Button variant="contained">Register</Button></Link>
             </>
           )}
+          <DarkModeToggle />
         </nav>
       </div>
     </header>

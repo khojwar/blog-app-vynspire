@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./Providers";
 import Header from "../components/Header";
 import { Toaster } from 'react-hot-toast';
+import ThemeRegistry from "@/components/ThemeProvider";
+
 
 
 const geistSans = Geist({
@@ -31,11 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <Header />
-          <Toaster position="top-right" />
-          {children}
-        </Providers>
+        <ThemeRegistry>
+          <Providers>
+            <Header />
+            <Toaster position="top-right" />
+            {children}
+          </Providers>
+        </ThemeRegistry>
       </body>
     </html>
   );
