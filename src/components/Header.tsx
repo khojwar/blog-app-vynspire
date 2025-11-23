@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Button, Input } from '@mui/material';
 import { useAuth } from '../hooks/useAuth';
+import { usePosts } from '../hooks/usePosts';
 import DarkModeToggle from "./DarkModeToggle";
 import { useTheme } from '@mui/material/styles';
 import { Menu } from 'lucide-react';
@@ -10,11 +11,17 @@ import TextField from '@mui/material/TextField';
 
 export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
+  const { setSearchQuery } = usePosts();
   const theme = useTheme();
   const isDark = theme?.palette?.mode === 'dark';
 
   const headerClasses = `${isDark ? 'bg-gray-900 text-gray-100 border-b border-gray-700 shadow-md' : 'bg-white text-gray-900 border-b border-gray-200 shadow-sm'}`;
   const titleClasses = `${isDark ? 'text-2xl font-bold text-blue-300' : 'text-2xl font-bold text-blue-600'}`;
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const value = e.target.value || '';
+    setSearchQuery(value);
+  };
 
   return (
     <header className={headerClasses}>
@@ -32,6 +39,10 @@ export default function Header() {
               type="search"
               variant="standard"
               className='md:w-56 lg:w-md'
+              onChange={(e) => {
+                // update global search term exposed by usePosts
+                handleSearch(e);
+              }}
             />
           </span> 
         </div>

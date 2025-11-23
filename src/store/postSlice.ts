@@ -11,12 +11,14 @@ interface PostsState {
   posts: Post[];
   loading: boolean;
   error: string | null;
+  searchTerm: string;
 }
 
 const initialState: PostsState = {
   posts: [],
   loading: false,
   error: null,
+  searchTerm: '',
 };
 
 // Async thunks for CRUD
@@ -43,7 +45,11 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id: number
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchTerm(state, action: PayloadAction<string>) {
+      state.searchTerm = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => { state.loading = true; })
@@ -68,5 +74,7 @@ const postsSlice = createSlice({
       });
   },
 });
+
+export const { setSearchTerm } = postsSlice.actions;
 
 export default postsSlice.reducer;
