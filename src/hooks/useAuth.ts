@@ -32,7 +32,7 @@ export const useAuth = () => {
         router.push('/login');
     };
 
-    const requireAuth = () => {
+    const redirectIfNotAuth = () => {
         if (!isAuthenticated) router.push('/login');
     };
 
@@ -42,6 +42,6 @@ export const useAuth = () => {
         isAuthenticated,
         login,
         logout: logoutUser,
-        requireAuth,
+        redirectIfNotAuth,
     };
 }

@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast";
+import PrivateRoute from "@/components/PrivateRoute";
 
 const page = () => {
     const searchParams = useSearchParams();
@@ -12,7 +13,12 @@ const page = () => {
     }
 
   return (
-    <div>Dashbaord-page</div>
+    <div>
+        <PrivateRoute>
+            <h1>Dashboard Page - Protected</h1>
+            
+        </PrivateRoute>
+    </div>
   )
 }
 
