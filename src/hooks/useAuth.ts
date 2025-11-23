@@ -11,21 +11,20 @@ export const useAuth = () => {
     const router = useRouter();
 
     useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && !isAuthenticated) {  
-      try {
-        const decoded: any = jwtDecode(token);
-        dispatch(loginSuccess({ user: decoded, token }));
-      } catch (err) {
-        localStorage.removeItem('token');
-      }
-    }
-  }, [dispatch, isAuthenticated]);
+        const token = localStorage.getItem('token');
+        if (token && !isAuthenticated) {  
+            try {
+                const decoded: any = jwtDecode(token);
+                dispatch(loginSuccess({ user: decoded, token }));
+            } catch (err) {
+                localStorage.removeItem('token');
+            }
+        }
+    }, [dispatch, isAuthenticated]);
 
-
-    const login = (user: any, token: string) => {
+    const login = (user: any, token: string, msg: string) => {
         dispatch(loginSuccess({ user, token }));
-        router.push('/dashboard');
+        router.push('/dashboard?msg=' + encodeURIComponent(msg));
     };
 
     const logoutUser = () => {
@@ -45,8 +44,4 @@ export const useAuth = () => {
         logout: logoutUser,
         requireAuth,
     };
-
-
-
-
 }

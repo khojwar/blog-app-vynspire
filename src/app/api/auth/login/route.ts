@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const users: any[] = [
-    { id: 1, username: "testuser", email: "testuser@example.com", password: "Password@123" }
+    { id: 1, username: "testuser", email: "testuser@gmail.com", password: "Password@123" }
 ];
 
 export async function POST(request: NextRequest) {
@@ -30,13 +30,20 @@ export async function POST(request: NextRequest) {
         const token = jwt.sign(
             { 
                 userId: user.id, 
-                email: user.email 
+                email: user.email,
+                username: user.username
             }, 
             process.env.JWT_SECRET as string, 
             { expiresIn: '1h' }
         );
-
-        return NextResponse.json({ message: "Login successful.", token }, { status: 200 });
+        return NextResponse.json(
+            {
+                message: "Login successful.", 
+                token,
+                user: user.username
+            }, 
+            { status: 200 }
+        );
         
     } catch (error) {
         return NextResponse.json({ message: "An error occurred during login." }, { status: 500 });

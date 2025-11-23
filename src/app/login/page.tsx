@@ -53,12 +53,12 @@ export default function LoginPage() {
       });
 
       const json = await res.json();
-      console.log("login response", json);
+      console.log("login response", json);  // response: { message: "Login successful.", token: "...", user: { ... } }
       
-      if (!res.ok) throw new Error(json.error || 'Login failed');
+      if (!res.ok) throw new Error(json.message || 'Login failed');
 
       // Call useAuth() → store token + user in Redux
-      login(json.user, json.token);
+      login(json.user, json.token, json.message);
     } catch (err: any) {
       setError(err.message);
     } finally {
