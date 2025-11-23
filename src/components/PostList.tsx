@@ -11,7 +11,7 @@ const PostList = () => {
 
   const router = useRouter();
 
-  if (loading) return <CircularProgress />;
+  if (loading) return (<div className='flex justify-center items-center h-screen'><CircularProgress /></div>);
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
