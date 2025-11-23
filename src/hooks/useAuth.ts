@@ -3,7 +3,7 @@ import { RootState, AppDispatch } from '../store';
 import { loginSuccess, logout } from '../store/authSlice';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
 export const useAuth = () => {
     const { user, token, isAuthenticated } = useSelector((state: RootState) => state.auth);
