@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation"
 import toast from "react-hot-toast";
 import PrivateRoute from "@/components/PrivateRoute";
+import PostList from "@/components/PostList";
 
 const page = () => {
     const searchParams = useSearchParams();
@@ -10,13 +11,13 @@ const page = () => {
 
     if (msg) {
         toast.success(decodeURIComponent(msg));
-    }
+    }   
 
   return (
     <div>
         <PrivateRoute>
-            <h1>Dashboard Page - Protected</h1>
-            
+            <PostList />
+
         </PrivateRoute>
     </div>
   )

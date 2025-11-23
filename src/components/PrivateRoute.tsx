@@ -5,13 +5,17 @@ import { useEffect } from "react";
 
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-    const {isAuthenticated, redirectIfNotAuth} = useAuth();
+    const {isAuthenticated, isInitialized, redirectIfNotAuth} = useAuth();
 
     useEffect(() => {
-        if (!isAuthenticated) {
+        if (isInitialized && !isAuthenticated) {
             redirectIfNotAuth();
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, isInitialized]);
+
+    if (!isInitialized) {
+        return null;  // or a loading spinner/placehodler while auth state initializes
+    }
 
     return isAuthenticated ? <>{children}</> : null;
 }
