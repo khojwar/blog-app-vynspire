@@ -16,7 +16,6 @@ export default function Header() {
               <Link href="/posts/new">
                 <Button variant="contained">New Post</Button>
               </Link>
-              <span>Hello, {user?.name}</span>
               <Button onClick={logout} variant="outlined" color="error">Logout</Button>
             </>
           ) : (
