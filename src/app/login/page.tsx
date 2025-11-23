@@ -49,7 +49,8 @@ export default function LoginPage() {
       });
 
       const json = await res.json();
-
+    //   console.log(json);
+      
       if (!res.ok) throw new Error(json.error || 'Login failed');
 
       // Call useAuth() → store token + user in Redux
@@ -62,41 +63,43 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow mt-10">
-      <h1 className="text-3xl font-bold mb-6 text-center">Login</h1>
+    <div className='flex flex-col justify-center items-center min-h-screen'>
+        <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow md:w-full">
+        <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">Login</h1>
 
-      {error && (
-        toast.error(error)
-      )}
+        {error && (
+            toast.error(error)
+        )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 flex flex-col gap-4">
-        <TextField
-          label="Email"
-          fullWidth
-          {...register('email')}
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 flex flex-col gap-4">
+            <TextField
+            label="Email"
+            fullWidth
+            {...register('email')}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            />
 
-        <TextField
-          label="Password"
-          type="password"
-          fullWidth
-          {...register('password')}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
+            <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            {...register('password')}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            />
 
-        <Button
-          type="submit"
-          variant="contained"
-          fullWidth
-          size="large"
-          disabled={loading}
-        >
-          {loading ? 'Logging in…' : 'Login'}
-        </Button>
-      </form>
+            <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            size="large"
+            disabled={loading}
+            >
+            {loading ? 'Logging in…' : 'Login'}
+            </Button>
+        </form>
+        </div>
     </div>
   );
 }
