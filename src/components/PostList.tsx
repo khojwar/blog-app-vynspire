@@ -28,9 +28,9 @@ const PostList = () => {
 
   return (
     <div className='flex flex-col justify-center items-center m-4'>
-        <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {paginatedPosts.map((post) => (
-            <li key={post.id} className="p-4 border rounded">
+            <li key={post.id} className="p-4 border rounded flex flex-col justify-between h-full">
               <h2 className="text-xl font-bold pb-2">
                 {(() => {
                   const words = post.title.trim().split(/\s+/);
