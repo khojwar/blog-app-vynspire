@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
+```
+pnpm i
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## For demo test
+```
+email: testuser@gmail.com
+password: Password@123
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
+1. Authentication 
+2. Blog Post Management
+3. Protected Routes
+4. rich-text editor for blog content. 
+5. pagination. 
+6. search feature. 
+7. dark/light theme. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Used packages, tools and resources 
+* Nextjs
+* Redux Toolkit
+* Next.js Router 
+* TailwindCSS, MUI
+* localStorage 
+* Yup (form validation)
+* React-hook-form
+* React-quill (RichTextEditor)
+* axios
+* JWT token
+* Dummy API: https://jsonplaceholder.typicode.com
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screenshot
+### Register page
+![alt text](image-1.png)
 
-## Deploy on Vercel
+### Login page
+![alt text](image-2.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Before login
+![alt text](image-3.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### After login
+![alt text](image-4.png)
+
+### new post with RichTextEditor
+![alt text](image-5.png)
+
+### Responsive design with dark-mode
+![alt text](image-6.png)
+
+
+
+
+
